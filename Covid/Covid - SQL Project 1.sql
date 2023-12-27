@@ -1,7 +1,7 @@
 select * from covid_db..covid_deaths$
 order by 3, 4
 
---SELECT DATA WE'LL BE USING
+--SELECTING DATA
 select location, date, total_cases, total_deaths, new_cases, population 
 from covid_db..covid_deaths$
 order by 1, 2
@@ -40,14 +40,6 @@ where continent is not null
 group by continent
 order by HighestDeathCount desc
 
-
---Global numbers
-select date, Sum(new_cases) as death_per_day 
-from covid_db..covid_deaths$
---where location like '%states%'
-where continent is not null
-group by date
-order by 1, 2
 
 --Global numbers-- total no. of cases vs deaths overall
 select Sum(new_cases) as total_cases, Sum(cast(new_deaths as int)) as total_deaths, 
